@@ -21,3 +21,13 @@ def preprocesado_imagen(ruta_imagen):
     image = Image.open(ruta_imagen).convert("RGB")
     image = transform(image)
     return image
+
+def preprocesado_imagenVAE(ruta_imagen):
+    transform = transforms.Compose([
+    transforms.Resize((30, 30)),
+    transforms.RandomResizedCrop(28),
+    transforms.ToTensor()
+    ])
+    image = Image.open(ruta_imagen).convert("RGB")
+    image = transform(image)
+    return image
