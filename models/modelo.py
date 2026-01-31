@@ -29,40 +29,53 @@ class VAE(nn.Module):
         super(VAE, self).__init__()
 
         self.encoder = nn.Sequential(
-            # 3x28x28 -> 8x14x14
-            nn.Conv2d(3, 8, 3, stride=2, padding=1),
+            # 3x224x224 -> 32x112x112
+            nn.Conv2d(3, 32, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            # 8x14x14 -> 16x7x7
-            nn.Conv2d(8, 16, 3, stride=2, padding=1),
+            # 32x112x112 -> 64x56x56
+            nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
-            # 16x7x7 -> 32x4x4
-            nn.Conv2d(16, 32, 3, stride=2, padding=1),
+            # 64x56x56 -> 128x28x28
+            nn.Conv2d(64, 128, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+            # 128x28x28 -> 256x14x14
+            nn.Conv2d(128, 256, kernel_size=3, stride=2, padding=1),
+            nn.ReLU(),
+            # 256x14x14 -> 512x7x7
+            nn.Conv2d(256, 512, kernel_size=3, stride=2, padding=1),
             nn.ReLU(),
             nn.Flatten(),
-            nn.Linear(32 * 4 * 4, 64),
+            nn.Linear(512 * 7 * 7, 1024),
             nn.ReLU(),
-            nn.Linear(64, 32),
-            nn.ReLU())
+            nn.Linear(1024, 256),
+            nn.ReLU()
+        )
 
-        self.fc_mu = nn.Linear(32, latent_dim)
-        self.fc_logvar = nn.Linear(32, latent_dim)
+        self.fc_mu = nn.Linear(256, latent_dim)
+        self.fc_logvar = nn.Linear(256, latent_dim)
 
         self.decoder = nn.Sequential(
-            nn.Linear(latent_dim, 32),
+            nn.Linear(latent_dim, 256),
             nn.ReLU(),
-            nn.Linear(32, 64),
+            nn.Linear(256, 1024),
             nn.ReLU(),
-            nn.Linear(64, 32 * 4 * 4),
+            nn.Linear(1024, 512 * 7 * 7),
             nn.ReLU(),
-            nn.Unflatten(1, (32, 4, 4)),
-            # 32x4x4 -> 16x7x7
-            nn.ConvTranspose2d(32, 16, 3, stride=2, padding=1),
+            nn.Unflatten(1, (512, 7, 7)),
+            # 512x7x7 -> 256x14x14
+            nn.ConvTranspose2d(512, 256, kernel_size=4, stride=2, padding=1),
             nn.ReLU(),
-            # 16x7x7 -> 8x14x14
-            nn.ConvTranspose2d(16, 8, 3, stride=2, padding=1, output_padding=1), 
+            # 256x14x14 -> 128x28x28
+            nn.ConvTranspose2d(256, 128, kernel_size=4, stride=2, padding=1),
             nn.ReLU(),
-            # 8x14x14 -> 3x28x28
-            nn.ConvTranspose2d(8, 3, 3, stride=2, padding=1, output_padding=1), 
+            # 128x28x28 -> 64x56x56
+            nn.ConvTranspose2d(128, 64, kernel_size=4, stride=2, padding=1),
+            nn.ReLU(),
+            # 64x56x56 -> 32x112x112
+            nn.ConvTranspose2d(64, 32, kernel_size=4, stride=2, padding=1),
+            nn.ReLU(),
+            # 32x112x112 -> 3x224x224
+            nn.ConvTranspose2d(32, 3, kernel_size=4, stride=2, padding=1),
             nn.Sigmoid()
         )
 

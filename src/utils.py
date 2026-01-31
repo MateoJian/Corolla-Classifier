@@ -16,7 +16,7 @@ def preprocesado_imagen(ruta_imagen):
     transforms.Resize((256, 256)),
     transforms.RandomResizedCrop(224),
     transforms.ToTensor(),
-    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]) #Utilizo una transformación muy parecida a ImageNet para que ResNet18 funcione mejor.
     ])
     image = Image.open(ruta_imagen).convert("RGB")
     image = transform(image)
@@ -24,8 +24,7 @@ def preprocesado_imagen(ruta_imagen):
 
 def preprocesado_imagenVAE(ruta_imagen):
     transform = transforms.Compose([
-    transforms.Resize((30, 30)),
-    transforms.RandomResizedCrop(28),
+    transforms.Resize((224, 224)),
     transforms.ToTensor()
     ])
     image = Image.open(ruta_imagen).convert("RGB")
