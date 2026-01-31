@@ -1,5 +1,4 @@
 import torch
-from utils import preprocesado_imagen
 import sys
 import os
 import redis
@@ -34,26 +33,22 @@ print(f"Worker listo en {device}. Esperando imágenes...")
 
 while True:
     try:
-        # blpop devuelve una tupla (nombre_cola, valor)
         _, raw_data = redis_client.blpop('trabajos')
         
-        # Convertir el string de Redis a diccionario de Python
         data = json.loads(raw_data)
         img_id = data["id"]
         
         # Decodificar imagen
         img_bytes = base64.b64decode(data["image"])
         image = Image.open(io.BytesIO(img_bytes)).convert('RGB')
-        image = transform(image).to(device).unsqueeze(0) # Añadir dimensión de batch
+        image = transform(image).to(device).unsqueeze(0)
 
-        # Inferencia Síncrona (Más estable para un Worker)
         with torch.no_grad():
             output = modelo(image)
             pred_idx = output.argmax(1).item()
             clase_final = indice_clases[pred_idx]
             confianza = torch.nn.functional.softmax(output, dim=1).max().item()
 
-        # Guardar resultado en Redis para que Flask lo recoja
         resultado = {
             "clase": clase_final,
             "probabilidad": f"{confianza:.2f}",
