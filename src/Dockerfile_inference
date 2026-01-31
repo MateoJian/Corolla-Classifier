@@ -5,7 +5,8 @@ FROM python:3.10
 WORKDIR /app
 
 # Copia los archivos necesarios al contenedor
-COPY servidor_proc.py /app
+COPY models /app/models 
+COPY src/inference.py /app/inference.py
 
 # Instala las dependencias necesarias
 RUN pip install torch
