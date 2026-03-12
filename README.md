@@ -17,16 +17,20 @@ Para explorar la estructura del dataset, se ha entrenado un autoencoder que redu
 Esto permite entender mejor la distribución del dataset.
 
 El sistema de inferencia está completamente dockerizado y compuesto por:
+
 Flask API
 Expone un endpoint /predict para recibir imágenes y devolver la clase predicha.
 Gestiona peticiones de forma ligera y eficiente.
+
 Redis
 Actúa como cola de tareas para desacoplar la API del proceso de inferencia.
 Permite manejar múltiples peticiones concurrentes.
+
 Nginx
 Servidor reverse proxy.
 Maneja el tráfico entrante y distribuye las peticiones hacia Flask.
 Aporta seguridad y escalabilidad.
+
 Docker Compose
 Orquesta todos los servicios.
 Facilita la reproducibilidad del entorno.
