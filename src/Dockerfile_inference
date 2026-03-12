@@ -1,5 +1,5 @@
 # Usa una imagen base de Python
-FROM python:3.10
+FROM pytorch/pytorch:2.1.0-cuda12.1-cudnn8-runtime
 
 # Establece el directorio de trabajo en el contenedor
 WORKDIR /app
@@ -9,8 +9,6 @@ COPY models /app/models
 COPY src/inference.py /app/inference.py
 
 # Instala las dependencias necesarias
-RUN pip install torch
-RUN pip install torchvision
 RUN pip install redis
 
 # Comando para ejecutar tu script Python
