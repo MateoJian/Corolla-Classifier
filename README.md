@@ -16,21 +16,25 @@ Entrenamiento con PyTorch.
 Para explorar la estructura del dataset, se ha entrenado un autoencoder que reduce las imágenes a un espacio latente de 2 dimensiones.
 Esto permite entender mejor la distribución del dataset.
 
-El sistema de inferencia está completamente dockerizado y compuesto por:
-
-Flask API
-Expone un endpoint /predict para recibir imágenes y devolver la clase predicha.
-Gestiona peticiones de forma ligera y eficiente.
-
-Redis
-Actúa como cola de tareas para desacoplar la API del proceso de inferencia.
-Permite manejar múltiples peticiones concurrentes.
-
-Nginx
-Servidor reverse proxy.
-Maneja el tráfico entrante y distribuye las peticiones hacia Flask.
-Aporta seguridad y escalabilidad.
-
-Docker Compose
-Orquesta todos los servicios.
-Facilita la reproducibilidad del entorno.
+Estructura:
+data/
+    Toyota Corolla Dataset/  //Carpeta con el dataset descargado
+models/
+    modelo_corolla.pth
+    modelo.py
+notebooks/
+    01_Entrenamiento_y_Evaluacion.ipynb
+src/
+    compose/
+        docker-compose.yml
+        nginx/
+            default.conf
+    __init__.py
+    apiflask.py
+    cliente.py
+    data.py
+    dataset.py
+    Dockerfile_api
+    Dockerfile_inference
+    inference.py
+    utils.py
