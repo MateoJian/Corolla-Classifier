@@ -16,6 +16,7 @@ Entrenamiento con PyTorch.
 Para explorar la estructura del dataset, se ha entrenado un autoencoder que reduce las imágenes a un espacio latente de 2 dimensiones.
 Esto permite entender mejor la distribución del dataset.
 
+```
 Estructura:  
 data/  
     Toyota Corolla Dataset/  //Carpeta con el dataset descargado  
@@ -38,3 +39,4 @@ src/
     Dockerfile_inference  
     inference.py  
     utils.py  
+    ```
