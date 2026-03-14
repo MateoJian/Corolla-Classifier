@@ -16,25 +16,25 @@ Entrenamiento con PyTorch.
 Para explorar la estructura del dataset, se ha entrenado un autoencoder que reduce las imágenes a un espacio latente de 2 dimensiones.
 Esto permite entender mejor la distribución del dataset.
 
-Estructura:
-data/
-    Toyota Corolla Dataset/  //Carpeta con el dataset descargado
-models/
-    modelo_corolla.pth
-    modelo.py
-notebooks/
-    01_Entrenamiento_y_Evaluacion.ipynb
-src/
-    compose/
-        docker-compose.yml
-        nginx/
-            default.conf
-    __init__.py
-    apiflask.py
-    cliente.py
-    data.py
-    dataset.py
-    Dockerfile_api
-    Dockerfile_inference
-    inference.py
-    utils.py
+Estructura:  
+data/  
+    Toyota Corolla Dataset/  //Carpeta con el dataset descargado  
+models/  
+    modelo_corolla.pth  
+    modelo.py  
+notebooks/  
+    01_Entrenamiento_y_Evaluacion.ipynb  
+src/  
+    compose/  
+        docker-compose.yml  
+        nginx/  
+            default.conf  
+    __init__.py  
+    apiflask.py  
+    cliente.py  
+    data.py  
+    dataset.py  
+    Dockerfile_api  
+    Dockerfile_inference  
+    inference.py  
+    utils.py  
