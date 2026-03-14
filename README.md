@@ -13,9 +13,6 @@ Se ha utilizado una ResNet18 preentrenada (transfer learning) con las siguientes
 Fine-tuning de las últimas capas.
 Entrenamiento con PyTorch.
 
-Para explorar la estructura del dataset, se ha entrenado un autoencoder que reduce las imágenes a un espacio latente de 2 dimensiones.
-Esto permite entender mejor la distribución del dataset.
-
 ```
 Estructura:  
 data/  
