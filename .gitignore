@@ -209,5 +209,5 @@ __marimo__/
 !data/
 
 data/Toyota Corolla Dataset/
-
+*.pt
 .vscode/
