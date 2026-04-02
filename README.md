@@ -20,7 +20,8 @@ data/
 models/  
     modelo_corolla.pth  
     modelo.py  
-notebooks/  
+notebooks/
+    wandb/
     01_Entrenamiento_y_Evaluacion.ipynb  
 src/  
     compose/  
