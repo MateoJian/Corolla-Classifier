@@ -1,0 +1,61 @@
+_wandb:
+    value:
+        cli_version: 0.25.1
+        e:
+            24io6t6v1zowrke5yx07dcbp5crpn9x4:
+                codePath: /home/mateojian/Documentos/Proyectos/Corolla-Classifier-clean/notebooks/01_Entrenamiento_y_Evaluacion.ipynb
+                codePathLocal: 01_Entrenamiento_y_Evaluacion.ipynb
+                cpu_count: 6
+                cpu_count_logical: 12
+                cudaVersion: "13.1"
+                disk:
+                    /:
+                        total: "30782906368"
+                        used: "26171277312"
+                email: uo299998@uniovi.es
+                executable: /home/mateojian/anaconda3/envs/corolla/bin/python
+                git:
+                    commit: 4f9da7673ed01908dd37a754c73b1dddac77e747
+                    remote: https://github.com/MateoJian/Corolla-Classifier.git
+                gpu: NVIDIA GeForce RTX 5060
+                gpu_count: 1
+                gpu_nvidia:
+                    - architecture: Blackwell
+                      cudaCores: 3840
+                      memoryTotal: "8546942976"
+                      name: NVIDIA GeForce RTX 5060
+                      uuid: GPU-b0111ea5-e13d-0921-53c8-4775510b5667
+                host: mateopc
+                memory:
+                    total: "16645361664"
+                os: Linux-6.17.0-20-generic-x86_64-with-glibc2.39
+                program: /home/mateojian/Documentos/Proyectos/Corolla-Classifier-clean/notebooks/01_Entrenamiento_y_Evaluacion.ipynb
+                python: CPython 3.10.19
+                root: /home/mateojian/Documentos/Proyectos/Corolla-Classifier-clean/notebooks
+                startedAt: "2026-04-02T13:43:14.901372Z"
+                writerId: 24io6t6v1zowrke5yx07dcbp5crpn9x4
+        m: []
+        python_version: 3.10.19
+        t:
+            "1":
+                - 1
+                - 41
+            "2":
+                - 1
+                - 41
+            "3":
+                - 2
+                - 13
+                - 16
+            "4": 3.10.19
+            "5": 0.25.1
+            "8":
+                - 1
+            "12": 0.25.1
+            "13": linux-x86_64
+dropout:
+    value: 0.7545357241838698
+lr:
+    value: 0.0005
+patience:
+    value: 7

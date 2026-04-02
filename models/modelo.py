@@ -3,7 +3,7 @@ from torchvision import models
 import torch
 
 class Modelo(nn.Module):
-    def __init__(self):
+    def __init__(self, dropout):
         super(Modelo, self).__init__()
         self.model = models.resnet18(pretrained=True)
         for param in self.model.parameters():
@@ -16,6 +16,7 @@ class Modelo(nn.Module):
             nn.ReLU(),
             nn.Linear(128, 64),
             nn.ReLU(),
+            nn.Dropout(dropout),
             nn.Linear(64, 7)
         )
 
