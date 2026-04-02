@@ -21,6 +21,7 @@ models/
     modelo_corolla.pth  
     modelo.py  
 notebooks/
+    img/
     wandb/
     01_Entrenamiento_y_Evaluacion.ipynb  
 src/  
